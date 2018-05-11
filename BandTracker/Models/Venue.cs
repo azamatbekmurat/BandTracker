@@ -132,12 +132,13 @@ namespace BandTracker.Models
       cmd.Parameters.Add(new MySqlParameter("@searchId", id));
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
-      while(rdr.Read())
       int venueId = 0;
       string venueName = "";
       string venueDescription = "";
       string venueLocation = "";
       int venueCapacity = 0;
+
+      while(rdr.Read())
       {
         venueId = rdr.GetInt32(0);
         venueName = rdr.GetString(1);
@@ -275,9 +276,9 @@ namespace BandTracker.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM venus WHERE id = @venueId; DELETE FROM venues_bands WHERE venue_id = @venueId;";
+      cmd.CommandText = @"DELETE FROM venues WHERE id = @venueId; DELETE FROM venues_bands WHERE venue_id = @venueId;";
 
-      cmd.Parameters.Add(new MySqlParameter("@venueId". this.GetId()));
+      cmd.Parameters.Add(new MySqlParameter("@venueId", this.GetId()));
 
       cmd.ExecuteNonQuery();
       if (conn != null)

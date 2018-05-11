@@ -53,7 +53,7 @@ namespace BandTracker.Models
     }
     public override int GetHashCode()
     {
-      return this.GetName().GetHashCode();
+      return this.GetBandName().GetHashCode();
     }
     public static List<Band> GetAllBands()
     {
@@ -145,7 +145,7 @@ namespace BandTracker.Models
         string venueName = rdr.GetString(1);
         string venueDescription = rdr.GetString(2);
         string venueLocation = rdr.GetString(3);
-        int venueCapacity = rdr.GetString(4);
+        int venueCapacity = rdr.GetInt32(4);
         Venue newVenue = new Venue(venueName, venueDescription, venueLocation, venueCapacity, venueId);
         venues.Add(newVenue);
       }
