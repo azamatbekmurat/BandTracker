@@ -131,9 +131,9 @@ namespace BandTracker.Models
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT venues.* FROM bands
-      JOIN venues_bands ON (band_id=venues_bands.band_id)
+      JOIN venues_bands ON (bands.id=venues_bands.band_id)
       JOIN venues ON (venues_bands.venue_id=venues.id)
-      WHERE band_id=@BandId;";
+      WHERE bands.id=@BandId;";
 
       cmd.Parameters.Add(new MySqlParameter("@BandId", _id));
 
@@ -149,7 +149,6 @@ namespace BandTracker.Models
         Venue newVenue = new Venue(venueName, venueDescription, venueLocation, venueCapacity, venueId);
         venues.Add(newVenue);
       }
-      rdr.Dispose();
 
       conn.Close();
       if (conn != null)

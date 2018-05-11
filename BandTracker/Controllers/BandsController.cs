@@ -25,6 +25,26 @@ namespace BandTracker.Controllers
         newBand.Save();
         return RedirectToAction("Success", "Home");
       }
+      [HttpGet("/bands/{id}")]
+      public ActionResult BandDetails(int id)
+      {
+        Dictionary<string, object> foundBandDetails = new Dictionary<string, object> ();
+        Band selectedBand = Band.Find(id);
+        List<Venue> bandsVenues = selectedBand.GetVenues();
+        List<Venue> allVenues = Venue.GetAllVenues();
+        foundBandDetails.Add("selectedBand", selectedBand);
+        foundBandDetails.Add("bandsVenues", bandsVenues);
+        foundBandDetails.Add("allVenues", allVenues);
+        return View(foundBandDetails);
+      }
+      [HttpPost("/bands/{bandId}/venues/new")]
+      public ActionResult AddAVenue(int bandId)
+      {
+        Band band = Band.Find(bandId);
+        Venue venue = Venue.Find(Int32.Parse(Request.Form["venue-id"]));
+        band.AddVenue(venue);
+        return RedirectToAction("BandDetails", new { id = bandId });
+      }
 
     }
 }

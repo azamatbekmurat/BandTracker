@@ -1,0 +1,38 @@
+@using BandTracker.Models;
+
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Band Details:</h1>
+        <h2>@Model["selectedBand"].GetBandName()</h2>
+        <hr />
+        @if (@Model["bandsVenues"].Count != 0)
+        {
+          <h4>This band had been in following venues:</h4>
+          <ul>
+            @foreach (Venue venue in @Model["bandsVenues"])
+            {
+              <li>@venue.GetName()</li>
+            }
+          </ul>
+        }
+        <h4>Add an venue to this band:</h4>
+        <form action='/bands/@Model["selectedBand"].GetId()/venues/new' method='post'>
+          <label for='venue-id'>Select an venue</label>
+          <select id='venue-id' name='venue-id' type='text'>
+            @foreach (var venue in @Model["allVenues"])
+            {
+              <option value='@venue.GetId()'>@venue.GetName()</option>
+            }
+          </select>
+          <button type='submit'>Add an venue to this band!</button>
+        </form>
+        <br>
+        <h4><a href="/">Return to Home Page</a></h4>
+
+    </div>
+  </div>
+</div>
