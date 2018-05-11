@@ -19,8 +19,9 @@ This web application is built with C# Asp Net Core MVC framework as well as MySQ
 * Open MySql and run following commands:
   * CREATE DATABASE band_tracker;
   * USE band_tracker;
-  * CREATE TABLE bands ();
-  * CREATE TABLE venues ();
+  * CREATE TABLE venues (id serial PRIMARY KEY, name VARCHAR(255), description VARCHAR(255), location VARCHAR(255), capacity INT);
+  * CREATE TABLE bands (id serial PRIMARY KEY, name VARCHAR(255), genre VARCHAR(255));
+  * CREATE TABLE venues_bands (id serial PRIMARY KEY, venue_id INT, band_id INT);
 
 ## Known Bugs
 
