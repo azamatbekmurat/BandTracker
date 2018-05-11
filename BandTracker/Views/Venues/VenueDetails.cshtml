@@ -1,4 +1,4 @@
-@using Library.Models;
+@using BandTracker.Models;
 
 @{
   Layout = "_Layout";
@@ -6,8 +6,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Venue Details:</h1>
-        <h2>Venue Name: @Model["selectedVenue"].GetName()</h2>
+      <h3>Venue Details:</h3>
+        <h4>@Model["selectedVenue"].GetName(), @Model["selectedVenue"].GetDescription(), @Model["selectedVenue"].GetLocation(), @Model["selectedVenue"].GetCapacity()</h4>
         <hr />
         @if (@Model["venueBands"].Count != 0)
         {
@@ -15,7 +15,7 @@
           <ul>
             @foreach (Band band in @Model["venueBands"])
             {
-              <li>@band.GetName()</li>
+              <li>@band.GetBandName()</li>
             }
           </ul>
         }
@@ -25,13 +25,13 @@
           <select id='band-id' name='band-id' type='text'>
             @foreach (var band in @Model["allBands"])
             {
-              <option value='@band.GetId()'>@band.GetName()</option>
+              <option value='@band.GetId()'>@band.GetBandName()</option>
             }
           </select>
           <button type='submit'>Add a band!</button>
         </form>
         <br>
-        <form action='/venues/@Model["selectedVenue"].GetId()/edit' method='post'>
+        <form action='/venues/@Model["selectedVenue"].GetId()/edit' method='get'>
           <button type='submit'>Edit info!</button>
         </form>
         <br>

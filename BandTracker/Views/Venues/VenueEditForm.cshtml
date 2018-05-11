@@ -9,14 +9,18 @@
       <h3>Title: @Model.GetName(), Description: @Model.GetDescription(), Location: @Model.GetLocation(), Capacity: @Model.GetCapacity()</h3>
       <br>
       <form action="/venues/edit/@Model.GetId()/change" method="post">
-        <label for="editName">New Name of the Venue:</label>
+        <label for="editName">New Name:</label>
         <input id="editName" name="editName" type="text">
-        <label for="editDescription">New Description of the Venue:</label>
+        <br>
+        <label for="editDescription">New Description:</label>
         <input id="editDescription" name="editDescription" type="text">
-        <label for="editLocation">New Location of the Venue:</label>
+        <br>
+        <label for="editLocation">New Location:</label>
         <input id="editLocation" name="editLocation" type="text">
-        <label for="editCapacity">New Capacity of the Venue:</label>
+        <br>
+        <label for="editCapacity">New Capacity:</label>
         <input id="editCapacity" name="editCapacity" type="text">
+        <br>
         <button type="submit">Change info!</button>
       </form>
       <br>
