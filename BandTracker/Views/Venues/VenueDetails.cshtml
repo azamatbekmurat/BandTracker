@@ -1,0 +1,46 @@
+@using Library.Models;
+
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Venue Details:</h1>
+        <h2>Venue Name: @Model["selectedVenue"].GetName()</h2>
+        <hr />
+        @if (@Model["venueBands"].Count != 0)
+        {
+          <h4>This venue has hosted following bands:</h4>
+          <ul>
+            @foreach (Band band in @Model["venueBands"])
+            {
+              <li>@band.GetName()</li>
+            }
+          </ul>
+        }
+        <h4>Add a band to this venue:</h4>
+        <form action='/venues/@Model["selectedVenue"].GetId()/bands/new' method='post'>
+          <label for='band-id'>Select a band</label>
+          <select id='band-id' name='band-id' type='text'>
+            @foreach (var band in @Model["allBands"])
+            {
+              <option value='@band.GetId()'>@band.GetName()</option>
+            }
+          </select>
+          <button type='submit'>Add a band!</button>
+        </form>
+        <br>
+        <form action='/venues/@Model["selectedVenue"].GetId()/edit' method='post'>
+          <button type='submit'>Edit info!</button>
+        </form>
+        <br>
+        <form action='/venues/@Model["selectedVenue"].GetId()/delete' method='post'>
+          <button type='submit'>Delete this venue!</button>
+        </form>
+        <br>
+        <h4><a href="/">Return to Home</a></h4>
+
+    </div>
+  </div>
+</div>

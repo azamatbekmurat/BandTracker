@@ -1,0 +1,40 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <h3>Search Result:</h3>
+      @if (Model.Count == 1)
+      {
+        <h4>Yes, in this place there was a concert:</h4>
+        <ul>
+        @foreach(var venue in Model)
+        {
+
+          <li><a href='/venues/@venue.GetId()'>@venue.GetName(), @venue.GetDescription(), @venue.GetLocation()</a></li>
+        }
+
+        </ul>
+      }
+      else if (Model.Count > 1)
+      {
+        <h4>Here is a list of found venues:</h4>
+        <ul>
+        @foreach(var venue in Model)
+        {
+
+          <li><a href='/venues/@venue.GetId()'>@venue.GetName(), @venue.GetDescription(), @venue.GetLocation()</a></li>
+        }
+
+        </ul>
+      }
+      else
+      {
+        <h4>Unfortunately, we don't have such a place</h4>
+      }
+      <h4><a href="/">Return Home</a></h4>
+    </div>
+  </div>
+</div>

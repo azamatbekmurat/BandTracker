@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Change information about the Place</h1>
+      <hr />
+      <h3>Title: @Model.GetName(), Description: @Model.GetDescription(), Location: @Model.GetLocation(), Capacity: @Model.GetCapacity()</h3>
+      <br>
+      <form action="/venues/edit/@Model.GetId()/change" method="post">
+        <label for="editName">New Name of the Venue:</label>
+        <input id="editName" name="editName" type="text">
+        <label for="editDescription">New Description of the Venue:</label>
+        <input id="editDescription" name="editDescription" type="text">
+        <label for="editLocation">New Location of the Venue:</label>
+        <input id="editLocation" name="editLocation" type="text">
+        <label for="editCapacity">New Capacity of the Venue:</label>
+        <input id="editCapacity" name="editCapacity" type="text">
+        <button type="submit">Change info!</button>
+      </form>
+      <br>
+      <h4><a href="/">Return Home</a></h4>
+      <h4><a href="/venues">View all venues</a></h4>
+    </div>
+  </div>
+</div>

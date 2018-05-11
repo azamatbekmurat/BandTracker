@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>New Band Form</h1>
+      <hr />
+      <form action="/bandForm" method="post">
+        <label for="bandName">Band Name:</label>
+        <input id="bandName" name="bandName" type="text">
+        <label for="bandGenre">Band Genre:</label>
+        <input id="bandGenre" name="bandGenre" type="text">
+        <button type="submit">Add a Band!</button>
+      </form>
+      <h4><a href="/">Return home</a></h4>
+      <h4><a href="/bands">View all bands</a></h4>
+    </div>
+  </div>
+</div>

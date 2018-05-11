@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <form action="/venues/search" method="get">
+        <label for="venueName">Enter venue name:</label>
+        <input id="venueName" name="venueName" type="text">
+        <button type="submit">Search!</button>
+      </form>
+      <hr />
+
+      <h3><a href="/venues">View List of Venues</a></h3>
+      <h3><a href="/bands">View List of Bands</a></h3>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>New Venue Form</h1>
+      <hr />
+      <form action="/venueForm" method="post">
+        <label for="venueName">Venue Name:</label>
+        <input id="venueName" name="venueName" type="text">
+        <label for="venueDescription">Description:</label>
+        <input id="venueDescription" name="venueDescription" type="text">
+        <label for="venueLocation">Location:</label>
+        <input id="venueLocation" name="venueLocation" type="text">
+        <label for="venueCapacity">Capacity:</label>
+        <input id="venueCapacity" name="venueCapacity" type="text">
+        <button type="submit">Add a venue!</button>
+      </form>
+      <h4><a href="/">Return home</a></h4>
+      <h4><a href="/venues">View all venues</a></h4>
+    </div>
+  </div>
+</div>
